@@ -7,7 +7,6 @@ export const MIS_RUTINAS = [
     description: 'Rutina de Entrenamiento de Push Pull Legs, 6 veces a la semana',
     isActual: true, 
   },
-  // Aquí podemos agregar más rutinas más adelante para probar el scroll
   {
     id: '2',
     title: 'FULL BODY',

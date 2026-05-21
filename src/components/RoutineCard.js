@@ -7,14 +7,13 @@ export default function RoutineCard({ item }) {
   return (
     <TouchableOpacity style={styles.cardContainer} activeOpacity={0.8}>
       
-      {/* Fila superior: Etiqueta ACTUAL y el icono de fuego */}
       <View style={styles.cardHeader}>
         {item.isActual ? (
           <View style={styles.badge}>
             <Text style={styles.badgeText}>ACTUAL</Text>
           </View>
         ) : (
-          <View /> // Espacio vacío si no es la rutina actual
+          <View /> 
         )}
       </View>
 
@@ -28,10 +27,10 @@ export default function RoutineCard({ item }) {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    backgroundColor: COLORS.surface, // El fondo gris oscuro
+    backgroundColor: COLORS.surface, 
     borderRadius: SIZES.radius,
     padding: 20,
-    marginBottom: 16, // Espacio entre tarjetas
+    marginBottom: 16,
   },
   cardHeader: {
     flexDirection: 'row',
@@ -43,10 +42,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary,
     paddingVertical: 4,
     paddingHorizontal: 12,
-    borderRadius: 20, // Para que parezca una píldora
+    borderRadius: 20, 
   },
   badgeText: {
-    color: COLORS.background, // Texto negro
+    color: COLORS.background, 
     fontWeight: 'bold',
     fontSize: 12,
   },

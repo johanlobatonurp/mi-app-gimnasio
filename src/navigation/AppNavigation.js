@@ -15,22 +15,21 @@ export default function AppNavigation() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          // 👇 ESTA ES LA PARTE DEL HEADER QUE CAMBIAMOS
           headerStyle: { 
-            backgroundColor: '#1E1E1E', // Mismo gris oscuro que las pestañas
+            backgroundColor: '#1E1E1E', 
             shadowColor: 'transparent', 
             elevation: 0 
           },
-          headerTitleAlign: 'center',   // Centra el título
+          headerTitleAlign: 'center',   
           headerTintColor: COLORS.primary,
           headerTitleStyle: { fontWeight: 'bold', fontSize: 20 },
           
-          // Estilo de las pestañas inferiores
+          
           tabBarStyle: { backgroundColor: '#1E1E1E', borderTopWidth: 0 },
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.textMuted,
           
-          // Iconos dinámicos
+          
           tabBarIcon: ({ color, size }) => {
             let iconName;
             if (route.name === 'Entrenamiento') iconName = 'dumbbell';

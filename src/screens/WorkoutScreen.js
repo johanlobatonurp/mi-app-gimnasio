@@ -1,28 +1,47 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
+import React, {useEffect} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, Button } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS, SIZES } from '../constants/theme';
+import * as Sentry from '@sentry/react-native';
 
 import { MIS_RUTINAS } from '../database/mockData';
 import RoutineCard from '../components/RoutineCard';
 
 export default function WorkoutScreen() {
+
+useEffect(() => {
+    const span = Sentry.startInactiveSpan({ 
+      name: "Cargar Pantalla Entrenamientos",
+      op: "ui.load" 
+    });
+    
+    setTimeout(() => {
+      if (span) {
+        span.end();
+      } 
+    }, 1000);
+  }, []);
+
   return (
     <View style={styles.container}>
       
-      {/* Título de la sección */}
       <Text style={styles.sectionTitle}>Rutinas</Text>
 
-      {/* Contenedor de los dos botones */}
+
       <View style={styles.buttonsRow}>
         
-        {/* Botón Principal (Crear Rutina) */}
-        <TouchableOpacity style={styles.primaryButton}>
+        <TouchableOpacity 
+          style={styles.primaryButton}
+          onPress={() => {
+            if (Sentry.metrics) {
+              Sentry.metrics.count("button_clicks", 1, { tags: { button: "crear_rutina_btn" } });
+            }
+          }}
+        >
           <MaterialCommunityIcons name="plus" size={24} color={COLORS.background} />
           <Text style={styles.primaryButtonText}>Crear Rutina{"\n"}Personalizada</Text>
         </TouchableOpacity>
 
-        {/* Botón Secundario (Explorar) */}
         <TouchableOpacity style={styles.secondaryButton}>
           <MaterialCommunityIcons name="search-web" size={24} color={COLORS.background} />
           <Text style={styles.secondaryButtonText}>Explorar{"\n"}Rutinas</Text>
@@ -30,10 +49,8 @@ export default function WorkoutScreen() {
 
       </View>
 
-      {/* 2. Nuevo Título para la sección de abajo */}
       <Text style={[styles.sectionTitle, { marginTop: 30 }]}>Mis Rutinas</Text>
 
-      {/* 3. FlatList para renderizar las tarjetas dinámicamente */}
       <FlatList
         data={MIS_RUTINAS}
         keyExtractor={(item) => item.id}
@@ -56,33 +73,33 @@ const styles = StyleSheet.create({
   sectionTitle: {
     color: COLORS.text,
     fontSize: 24,
-    fontWeight: '900', // Letra bien gruesa como en tu diseño
-    fontStyle: 'italic', // Tu título tiene una ligera inclinación
+    fontWeight: '900', 
+    fontStyle: 'italic', 
     marginBottom: 16,
   },
   buttonsRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    gap: 12, // Espacio entre los botones
+    gap: 12, 
   },
-  /* Estilos del Botón Amarillo */
+  
   primaryButton: {
-    flex: 1, // Para que ocupe la mitad del espacio
+    flex: 1, 
     backgroundColor: COLORS.primary,
     flexDirection: 'row',
     alignItems: 'center',
     padding: 12,
     borderRadius: SIZES.radius,
-    gap: 8, // Espacio entre el icono y el texto
+    gap: 8, 
   },
   primaryButtonText: {
     color: COLORS.background,
     fontWeight: 'bold',
     fontSize: 12,
   },
-  /* Estilos del Botón con Borde */
+
   secondaryButton: {
-    flex: 1, // Para que ocupe la otra mitad
+    flex: 1, 
     backgroundColor: COLORS.primary,
     flexDirection: 'row',
     alignItems: 'center',
