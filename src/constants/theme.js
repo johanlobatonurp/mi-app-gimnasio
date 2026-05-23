@@ -1,12 +1,10 @@
-// src/constants/theme.js
-
 export const COLORS = {
-  background: '#000000',     // Fondo Oscuro
-  surface: '#1E1E1E',        // Fondo gris para tarjetas
-  primary: '#D4FF00',        // Amarillo para botones
-  text: '#FFFFFF',           // Blanco para texto
-  textMuted: '#A3A3A3',      // Gris claro para descripciones
-  border: '#D4FF00',         // Amarillo para bordes
+  background: '#000000',     
+  surface: '#1E1E1E',        
+  primary: '#FF8C00',        
+  text: '#FFFFFF',           
+  textMuted: '#A3A3A3',     
+  border: '#FF8C00',         
 };
 
 export const SIZES = {

@@ -5,7 +5,7 @@ import { COLORS } from '../constants/theme';
 export default function WorkoutScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Pantalla</Text>
+      <Text style={styles.text}>Progreso</Text>
     </View>
   );
 }

@@ -1,5 +1,3 @@
-// src/database/mockData.js
-
 export const MIS_RUTINAS = [
   {
     id: '1',

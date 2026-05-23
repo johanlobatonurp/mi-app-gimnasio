@@ -6,18 +6,14 @@ import { COLORS, SIZES } from '../constants/theme';
 export default function RoutineCard({ item }) {
   return (
     <TouchableOpacity style={styles.cardContainer} activeOpacity={0.8}>
-      
       <View style={styles.cardHeader}>
         {item.isActual ? (
           <View style={styles.badge}>
-            <Text style={styles.badgeText}>ACTUAL</Text>
           </View>
         ) : (
           <View /> 
         )}
       </View>
-
-      {/* Contenido de la rutina */}
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.description}>{item.description}</Text>
       
